@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bogklubben – vores læselog</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#">bogklub<span>.</span></a>
+      <p>Vores fælles læselog</p>
+    </header>
+
+    <main class="container">
+      <section class="intro">
+        <p class="eyebrow">LÆS · TÆNK · DEL</p>
+        <h1>Bøger, vi har læst.<br /><em>Tanker, vi deler.</em></h1>
+        <p>Gem jeres vurderinger, yndlingspassager og tanker om bøgerne.</p>
+      </section>
+
+      <section class="form-card" aria-labelledby="form-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">LÆSELOG</p>
+            <h2 id="form-title">Tilføj en bog</h2>
+          </div>
+          <span class="book-icon" aria-hidden="true">✳</span>
+        </div>
+
+        <form id="book-form">
+          <input type="hidden" id="edit-id" />
+          <div class="form-grid">
+            <label>
+              Bogtitel
+              <input id="title" name="title" type="text" placeholder="Hvad hedder bogen?" required />
+            </label>
+            <label>
+              Forfatter
+              <input id="author" name="author" type="text" placeholder="Hvem har skrevet den?" />
+            </label>
+          </div>
+
+          <fieldset class="rating-field">
+            <legend>Hvordan vil du rate bogen?</legend>
+            <div class="stars" role="radiogroup" aria-label="Vælg en rating fra 1 til 5">
+              <button type="button" class="star" data-rating="1" aria-label="1 stjerne" aria-pressed="false">★</button>
+              <button type="button" class="star" data-rating="2" aria-label="2 stjerner" aria-pressed="false">★</button>
+              <button type="button" class="star" data-rating="3" aria-label="3 stjerner" aria-pressed="false">★</button>
+              <button type="button" class="star" data-rating="4" aria-label="4 stjerner" aria-pressed="false">★</button>
+              <button type="button" class="star" data-rating="5" aria-label="5 stjerner" aria-pressed="false">★</button>
+              <span id="rating-label">Vælg 1–5 stjerner</span>
+            </div>
+          </fieldset>
+
+          <label>
+            Dine tanker
+            <textarea id="thoughts" name="thoughts" rows="5" placeholder="Hvad fungerede godt? Hvad undrede dig? Hvilke temaer eller karakterer gjorde indtryk?"></textarea>
+          </label>
+          <label>
+            Yndlingspassage eller citat <span class="optional">(valgfrit)</span>
+            <textarea id="favorite" name="favorite" rows="2" placeholder="Skriv et citat, en side eller en scene, du husker."></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-button" id="save-button">Gem boganmeldelse <span>↗</span></button>
+            <button type="button" id="cancel-edit" class="text-button" hidden>Annullér redigering</button>
+          </div>
+          <p class="privacy-note">Anmeldelser gemmes i denne browsers lokale lager.</p>
+        </form>
+      </section>
+
+      <section class="library" aria-labelledby="library-title">
+        <div class="library-heading">
+          <div>
+            <p class="eyebrow">JERES SAMLING</p>
+            <h2 id="library-title">Vores bøger <span id="book-count">(0)</span></h2>
+          </div>
+          <label class="search-label">
+            <span class="sr-only">Søg i bøger</span>
+            <input type="search" id="search" placeholder="Søg efter en bog…" />
+          </label>
+        </div>
+        <div id="book-list" class="book-list"></div>
+        <p id="empty-state" class="empty-state">Jeres læselog er tom endnu. Tilføj den første bog ovenfor.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Lav plads til gode historier <span>✳</span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
